@@ -1,0 +1,22 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{711A77E2-44CE-987D-86FA-629FFC0B32A7}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "DoomsdaySurvival",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "ModelingToolsEditorMode",
+			"Enabled": true,
+			"TargetAllowList": [
+				"Editor"
+			]
+		}
+	]
+}
