@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Engine/DataTable.h"
 #include "GameFramework/Actor.h"
 #include "G_Item.generated.h"
 
@@ -10,18 +11,20 @@ class USkeletalMeshComponent;
 
 // 创建一个结构体，用于保存物品信息
 USTRUCT(BlueprintType)
-struct FItemData
+struct FItemData : public FTableRowBase // 数据表格（Data Table）的行结构体必须严格继承自 FTableRowBase
 {
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品ID")
-	FString ID;
+	FName ID;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品名称")
 	FString ItemName;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品最大堆叠数量")
 	int32 ItemMaxStack;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品UI图标")
-	UTexture2D* ItemIcon;
+	TSoftObjectPtr<UTexture2D> ItemIcon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可交互")
+	bool bCanInteract;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可拾取")
 	bool bCanPickUp;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可装备")
@@ -39,11 +42,17 @@ public:
 	AG_Item();
 	virtual void Tick(float DeltaTime) override;
 
+
 protected:
 	virtual void BeginPlay() override;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item Mesh")
 	USkeletalMeshComponent* ItemMesh;
 	
-
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品数据")
+	FName ItemID;
+	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "物品数据")
+	FItemData ItemData;
+	
 };

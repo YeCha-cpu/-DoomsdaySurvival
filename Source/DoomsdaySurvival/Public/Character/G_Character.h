@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "G_Character.generated.h"
 
+class USoundCue;
 class USpringArmComponent;
 class UCameraComponent;
 
@@ -41,6 +42,11 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	UAnimMontage* UnEquipAnimMontage;
 	
-		
+	/* --------------------------------------------声效------------------------------------------------ */
 	
+	UPROPERTY(EditDefaultsOnly)
+	USoundCue* EquipSoundComp;
+	
+	UPROPERTY(EditDefaultsOnly)
+	USoundCue* UnEquipSoundComp;
 };

@@ -57,6 +57,9 @@ void AG_PlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(WalkAction,ETriggerEvent::Triggered,this,&AG_PlayerController::StartWalkInput);
 	EnhancedInputComponent->BindAction(WalkAction,ETriggerEvent::Completed,this,&AG_PlayerController::StopWalkInput);
 	EnhancedInputComponent->BindAction(EquipAction,ETriggerEvent::Started,this,&AG_PlayerController::EquipInput);
+	EnhancedInputComponent->BindAction(InteractAction,ETriggerEvent::Started,this,&AG_PlayerController::StartInteractInput);
+	EnhancedInputComponent->BindAction(InteractAction,ETriggerEvent::Completed,this,&AG_PlayerController::StopInteractInput);
+	
 	
 }
 
@@ -202,5 +205,21 @@ void AG_PlayerController::EquipInput()// 按【E】触发
 			
 			G_Character->bIsEquipped = true;
 		}
+	}
+}
+
+void AG_PlayerController::StartInteractInput()
+{
+	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
+	{
+		
+	}
+}
+
+void AG_PlayerController::StopInteractInput()
+{
+	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
+	{
+		
 	}
 }

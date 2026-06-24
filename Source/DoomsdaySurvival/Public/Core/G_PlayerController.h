@@ -77,6 +77,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "G|Input")
 	TObjectPtr<UInputAction>EquipAction;
 	
+	UPROPERTY(EditAnywhere, Category = "G|Input")
+	TObjectPtr<UInputAction>InteractAction;
+	
 	/* ------------------------------输入回调函数------------------------------ */
 	void MoveInput(const FInputActionValue& InputActionValue);
 	void LookInput(const FInputActionValue& InputActionValue);
@@ -87,6 +90,8 @@ private:
 	void StartWalkInput();
 	void StopWalkInput();
 	void EquipInput();
+	void StartInteractInput();
+	void StopInteractInput();
 
 	void ReduceSpeedSlowly(float DeltaTime);
 };
