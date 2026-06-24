@@ -8,7 +8,7 @@
 
 AG_PlayerState::AG_PlayerState()
 {
-	NetUpdateFrequency = 100.f;
+	SetNetUpdateFrequency(100.f);
 	
 	// 创建技能系统组件
 	AbilitySystemComponent = CreateDefaultSubobject<UAbilitySystemComponent>("AbilitySystemComponent");
