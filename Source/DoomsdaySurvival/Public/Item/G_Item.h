@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GameplayTagContainer.h"
 #include "Engine/DataTable.h"
 #include "GameFramework/Actor.h"
 #include "G_Item.generated.h"
@@ -17,6 +18,8 @@ struct FItemData : public FTableRowBase // 数据表格（Data Table）的行结
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品ID")
 	FName ID;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品类型")
+	FGameplayTag ItemType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品名称")
 	FString ItemName;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品最大堆叠数量")

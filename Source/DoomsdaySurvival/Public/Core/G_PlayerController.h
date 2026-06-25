@@ -89,9 +89,14 @@ private:
 	void StopRunInput();
 	void StartWalkInput();
 	void StopWalkInput();
-	void EquipInput();
-	void StartInteractInput();
-	void StopInteractInput();
-
+	
 	void ReduceSpeedSlowly(float DeltaTime);
+	
+protected:
+	UFUNCTION(BlueprintNativeEvent, DisplayName = "开始交互时(Input)")
+	void StartInteractInput();
+	UFUNCTION(BlueprintNativeEvent, DisplayName = "停止交互时(Input)")
+	void StopInteractInput();
+	UFUNCTION(BlueprintNativeEvent, DisplayName = "装备主武器(Input)")
+	void EquipInput();
 };
