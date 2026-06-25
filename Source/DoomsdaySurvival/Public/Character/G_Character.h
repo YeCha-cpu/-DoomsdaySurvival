@@ -26,8 +26,13 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "Animation|Montage")
 	void PlayUnEquipMontage();
+	
+	UFUNCTION(BlueprintCallable, Category = "Animation|Sound")
+	void PlayEquipSoundCue();
 
-protected:
+	UFUNCTION(BlueprintCallable, Category = "Animation|Sound")
+	void PlayUnEquipSoundCue();
+	
 	UPROPERTY(EditDefaultsOnly)
 	USpringArmComponent* SpringArmComp;
 	
@@ -36,17 +41,17 @@ protected:
 	
 	/* --------------------------------------------动画蒙太奇------------------------------------------------ */
 	
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Animation|Montage")
 	UAnimMontage* EquipAnimMontage;
 	
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Animation|Montage")
 	UAnimMontage* UnEquipAnimMontage;
 	
-	/* --------------------------------------------声效------------------------------------------------ */
+	/* --------------------------------------------动画声效------------------------------------------------ */
 	
-	UPROPERTY(EditDefaultsOnly)
-	USoundCue* EquipSoundComp;
+	UPROPERTY(EditDefaultsOnly, Category = "Animation|Sound")
+	USoundCue* EquipSoundCue;
 	
-	UPROPERTY(EditDefaultsOnly)
-	USoundCue* UnEquipSoundComp;
+	UPROPERTY(EditDefaultsOnly, Category = "Animation|Sound")
+	USoundCue* UnEquipSoundCue;
 };

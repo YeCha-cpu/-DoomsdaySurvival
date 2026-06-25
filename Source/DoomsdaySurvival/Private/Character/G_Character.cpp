@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Sound/SoundCue.h"
 
 
 AG_Character::AG_Character()
@@ -42,4 +43,16 @@ void AG_Character::PlayUnEquipMontage()
 {
 	// 播放收回武器动画蒙太奇
 	PlayAnimMontage(UnEquipAnimMontage,1.0, FName("UnEquip"));
+}
+
+void AG_Character::PlayEquipSoundCue()
+{
+	// 播放装备声效
+	UGameplayStatics::PlaySoundAtLocation(this, EquipSoundCue, GetActorLocation(), GetActorRotation());
+}
+
+void AG_Character::PlayUnEquipSoundCue()
+{
+	// 播放收回武器声效
+	UGameplayStatics::PlaySoundAtLocation(this, UnEquipSoundCue, GetActorLocation(), GetActorRotation());
 }

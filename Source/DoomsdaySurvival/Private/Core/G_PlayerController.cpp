@@ -4,6 +4,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Character/G_Character.h"
+#include "Engine/LocalPlayer.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -185,41 +186,41 @@ void AG_PlayerController::ReduceSpeedSlowly(float DeltaTime)
 	}
 }
 
-void AG_PlayerController::EquipInput()// 按【E】触发
+void AG_PlayerController::EquipInput_Implementation()// 按【1】触发
 {
 	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
 	{
 		if (G_Character->bIsEquipped)
 		{
-			// 播放取消装备动画蒙太奇
+			// 播放取消装备动画蒙太奇与音效
 			G_Character->PlayUnEquipMontage();
-			UE_LOG(LogTemp, Warning, TEXT("UnEquipping Player Controller"));
+			G_Character->PlayUnEquipSoundCue();
 			
 			G_Character->bIsEquipped = false;
 		}
 		else
 		{
-			// 播放装备动画
+			// 播放装备动画与音效
 			G_Character->PlayEquipMontage();
-			UE_LOG(LogTemp, Warning, TEXT("Equipping Player Controller"));
+			G_Character->PlayEquipSoundCue();
 			
 			G_Character->bIsEquipped = true;
 		}
 	}
 }
 
-void AG_PlayerController::StartInteractInput()
+void AG_PlayerController::StartInteractInput_Implementation()
 {
 	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
 	{
-		
+		// 蓝图实现
 	}
 }
 
-void AG_PlayerController::StopInteractInput()
+void AG_PlayerController::StopInteractInput_Implementation()
 {
 	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
 	{
-		
+		// 蓝图实现
 	}
 }
