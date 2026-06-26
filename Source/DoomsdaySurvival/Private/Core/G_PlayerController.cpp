@@ -60,6 +60,7 @@ void AG_PlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(EquipAction,ETriggerEvent::Started,this,&AG_PlayerController::EquipInput);
 	EnhancedInputComponent->BindAction(InteractAction,ETriggerEvent::Started,this,&AG_PlayerController::StartInteractInput);
 	EnhancedInputComponent->BindAction(InteractAction,ETriggerEvent::Completed,this,&AG_PlayerController::StopInteractInput);
+	EnhancedInputComponent->BindAction( OpenInventoryAction,ETriggerEvent::Started,this,&AG_PlayerController::OpenInventoryInput);
 	
 	
 }
@@ -117,8 +118,6 @@ void AG_PlayerController::JumpInput()
 	{
 		G_Character->Jump();
 	}
-	
-	
 }
 
 void AG_PlayerController::StartRunInput()
@@ -183,6 +182,14 @@ void AG_PlayerController::ReduceSpeedSlowly(float DeltaTime)
 		}
 		float NewSpeed = FMath::FInterpTo(CurrentSpeed, ReduceTargetSpeed, DeltaTime, 10.0f);
 		G_Character->GetCharacterMovement()->MaxWalkSpeed = NewSpeed;
+	}
+}
+
+void AG_PlayerController::OpenInventoryInput_Implementation()// 按【Tab】触发
+{
+	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
+	{
+		// 蓝图实现
 	}
 }
 

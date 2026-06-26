@@ -16,30 +16,35 @@ struct FItemData : public FTableRowBase // 数据表格（Data Table）的行结
 {
 	GENERATED_BODY()
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品ID")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品ID")
 	FName ID;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品类型")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品类型")
 	FGameplayTag ItemType;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品名称")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品名称")
 	FString ItemName;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品描述")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品描述")
 	FText ItemDescription;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品重量")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品重量")
 	float ItemWeight;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品最大堆叠数量")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "使用时恢复数值")
+	float ItemUseValue;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品最大堆叠数量")
 	int32 ItemMaxStack;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品UI图标")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品UI图标")
 	TSoftObjectPtr<UTexture2D> ItemIcon;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品价值")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "物品价值")
 	int32 ItemValue;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可交互")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "是否可交互")
 	bool bCanInteract;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可拾取")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "是否可拾取")
 	bool bCanPickUp;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可装备")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "是否可装备")
 	bool bCanEquip;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可使用")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "是否可使用")
 	bool bCanUse;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, DisplayName = "是否可堆叠")
+	bool bCanStack;
+	
 };
 
 UCLASS()
@@ -55,7 +60,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item Mesh")
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "物品骨骼网格体")
 	USkeletalMeshComponent* ItemMesh;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品数据")

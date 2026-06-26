@@ -80,6 +80,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "G|Input")
 	TObjectPtr<UInputAction>InteractAction;
 	
+	UPROPERTY(EditAnywhere, Category = "G|Input")
+	TObjectPtr<UInputAction>OpenInventoryAction;
+	
 	/* ------------------------------输入回调函数------------------------------ */
 	void MoveInput(const FInputActionValue& InputActionValue);
 	void LookInput(const FInputActionValue& InputActionValue);
@@ -99,4 +102,6 @@ protected:
 	void StopInteractInput();
 	UFUNCTION(BlueprintNativeEvent, DisplayName = "装备主武器(Input)")
 	void EquipInput();
+	UFUNCTION(BlueprintNativeEvent, DisplayName = "打开背包(Input)")
+	void OpenInventoryInput();
 };
