@@ -22,10 +22,16 @@ struct FItemData : public FTableRowBase // 数据表格（Data Table）的行结
 	FGameplayTag ItemType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品名称")
 	FString ItemName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品描述")
+	FText ItemDescription;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品重量")
+	float ItemWeight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品最大堆叠数量")
 	int32 ItemMaxStack;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品UI图标")
 	TSoftObjectPtr<UTexture2D> ItemIcon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "物品价值")
+	int32 ItemValue;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可交互")
 	bool bCanInteract;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "是否可拾取")
