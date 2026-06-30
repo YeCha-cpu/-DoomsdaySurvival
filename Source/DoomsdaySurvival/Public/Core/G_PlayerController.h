@@ -63,7 +63,6 @@ private:
 	
 	UPROPERTY(EditAnywhere, Category = "G|Input")
 	TObjectPtr<UInputAction> ZoomAction;
-
 	
 	UPROPERTY(EditAnywhere, Category = "G|Input")
 	TObjectPtr<UInputAction> JumpAction;
@@ -83,6 +82,9 @@ private:
 	UPROPERTY(EditAnywhere, Category = "G|Input")
 	TObjectPtr<UInputAction>OpenInventoryAction;
 	
+	UPROPERTY(EditAnywhere, Category = "G|Input")
+	TObjectPtr<UInputAction>AttackAction;
+	
 	/* ------------------------------输入回调函数------------------------------ */
 	void MoveInput(const FInputActionValue& InputActionValue);
 	void LookInput(const FInputActionValue& InputActionValue);
@@ -92,7 +94,6 @@ private:
 	void StopRunInput();
 	void StartWalkInput();
 	void StopWalkInput();
-	
 	void ReduceSpeedSlowly(float DeltaTime);
 	
 protected:
@@ -104,4 +105,6 @@ protected:
 	void EquipInput();
 	UFUNCTION(BlueprintNativeEvent, DisplayName = "打开背包(Input)")
 	void OpenInventoryInput();
+	UFUNCTION(BlueprintNativeEvent, DisplayName = "玩家攻击(Input)")
+	void AttackInput();
 };

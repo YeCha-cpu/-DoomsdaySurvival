@@ -1,6 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Core/G_PlayerController.h"
+
+#include "AbilitySystemComponent.h"
 #include "EnhancedInputSubsystems.h"
 #include "EnhancedInputComponent.h"
 #include "Character/G_Character.h"
@@ -8,6 +10,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GAS/GA/GA_Attack.h"
 
 AG_PlayerController::AG_PlayerController()
 {
@@ -61,6 +64,7 @@ void AG_PlayerController::SetupInputComponent()
 	EnhancedInputComponent->BindAction(InteractAction,ETriggerEvent::Started,this,&AG_PlayerController::StartInteractInput);
 	EnhancedInputComponent->BindAction(InteractAction,ETriggerEvent::Completed,this,&AG_PlayerController::StopInteractInput);
 	EnhancedInputComponent->BindAction( OpenInventoryAction,ETriggerEvent::Started,this,&AG_PlayerController::OpenInventoryInput);
+	EnhancedInputComponent->BindAction(AttackAction, ETriggerEvent::Started,this,&AG_PlayerController::AttackInput);
 	
 	
 }
@@ -182,6 +186,15 @@ void AG_PlayerController::ReduceSpeedSlowly(float DeltaTime)
 		}
 		float NewSpeed = FMath::FInterpTo(CurrentSpeed, ReduceTargetSpeed, DeltaTime, 10.0f);
 		G_Character->GetCharacterMovement()->MaxWalkSpeed = NewSpeed;
+	}
+}
+
+// 激活玩家角色默认赋予的攻击GA
+void AG_PlayerController::AttackInput_Implementation()
+{
+	if (AG_Character* G_Character = Cast<AG_Character>(GetCharacter()))
+	{
+		// 蓝图实现
 	}
 }
 

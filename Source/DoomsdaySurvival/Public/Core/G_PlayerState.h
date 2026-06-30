@@ -9,6 +9,7 @@
 
 class UAbilitySystemComponent;
 class UAttributeSet;
+class UAS_Player;
 
 UCLASS()
 class DOOMSDAYSURVIVAL_API AG_PlayerState : public APlayerState, public IAbilitySystemInterface
@@ -24,10 +25,10 @@ public:
 	FORCEINLINE UAttributeSet* GetAttributeSet() const { return AttributeSet; }
 	
 protected:
-	UPROPERTY(VisibleAnywhere)
-	UAbilitySystemComponent* AbilitySystemComponent;
-	
-	UPROPERTY(VisibleAnywhere)
-	UAttributeSet* AttributeSet;
+	// 能力系统组件 和 属性集 对象引用
+	UPROPERTY()
+	TObjectPtr<UAbilitySystemComponent> AbilitySystemComponent;
+	UPROPERTY()
+	TObjectPtr<UAttributeSet> AttributeSet;
 };
 
